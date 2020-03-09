@@ -1,1 +1,1 @@
-web: gunicorn basic_trader.wsgi
+web: python basic_trader/mode/info_stream.py
