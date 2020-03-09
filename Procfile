@@ -1,1 +1,1 @@
-web: gunicorn myproject.wsgi
+web: gunicorn basic_trader.wsgi
