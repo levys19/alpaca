@@ -1,1 +1,1 @@
-web: python basic_trader/mode/info_stream.py
+web: python basic_trader/model/info_stream.py
