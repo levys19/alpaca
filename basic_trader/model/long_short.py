@@ -3,7 +3,6 @@ import threading
 import time
 import datetime
 import os
-import psutil
 class LongShort:
   def __init__(self):
     self.alpaca = tradeapi.REST(os.environ['APCA_API_KEY_ID'], os.environ['APCA_API_SECRET_KEY'], os.environ['APCA_API_BASE_URL'], 'v2')
@@ -13,7 +12,6 @@ class LongShort:
     self.allStocks = []
     for stock in stockUniverse:
       self.allStocks.append([stock, 0])
-
     self.long = []
     self.short = []
     self.qShort = None
@@ -34,9 +32,6 @@ class LongShort:
 
     # Wait for market to open.
     print("Waiting for market to open...")
-    process = psutil.Process(os.getpid())
-    print(process.memory_info().rss)
-
     tAMO = threading.Thread(target=self.awaitMarketOpen)
     tAMO.start()
     tAMO.join()

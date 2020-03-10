@@ -109,8 +109,8 @@
       <file leaf-file-name="long_short.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/basic_trader/model/long_short.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state relative-caret-position="16">
+              <caret line="4" column="9" lean-forward="false" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -135,6 +135,7 @@
       <find>myproject</find>
       <find>awaitmarket</find>
       <find>awa</find>
+      <find>psutil</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -691,8 +692,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/basic_trader/model/long_short.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="16">
+          <caret line="4" column="9" lean-forward="false" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
