@@ -2,14 +2,15 @@ import alpaca_trade_api as tradeapi
 import threading
 import time
 import datetime
-
+import os
+import psutil
 class LongShort:
   def __init__(self):
-    self.alpaca = tradeapi.REST('v2')
+    self.alpaca = tradeapi.REST(os.environ['APCA_API_KEY_ID'], os.environ['APCA_API_SECRET_KEY'], os.environ['APCA_API_BASE_URL'], 'v2')
 
-    stockUniverse = ['DOMO', 'TLRY', 'SQ', 'MRO', 'AAPL', 'GM', 'SNAP', 'SHOP', 'SPLK', 'BA', 'AMZN', 'SUI', 'SUN', 'TSLA', 'CGC', 'SPWR', 'NIO', 'CAT', 'MSFT', 'PANW', 'OKTA', 'TWTR', 'TM', 'RTN', 'ATVI', 'GS', 'BAC', 'MS', 'TWLO', 'QCOM', ]
+    stockUniverse = ['DOMO', 'TLRY', 'SQ', 'MRO', 'AAPL', 'GM', 'SNAP', 'SHOP', 'SPLK', 'BA', 'AMZN', 'SUI', 'SUN', 'TSLA', 'CGC', 'SPWR', 'NIO', 'CAT', 'MSFT', 'PANW', 'OKTA', 'TWTR', 'TM', 'RTN', 'ATVI', 'GS', 'BAC', 'MS', 'TWLO', 'QCOM' ]
     # Format the allStocks variable for use in the class.
-    self.allStocks = stockUniverse
+    self.allStocks = []
     for stock in stockUniverse:
       self.allStocks.append([stock, 0])
 
@@ -26,12 +27,16 @@ class LongShort:
 
   def run(self):
     # First, cancel any existing orders so they don't impact our buying power.
+
     orders = self.alpaca.list_orders(status="open")
     for order in orders:
       self.alpaca.cancel_order(order.id)
 
     # Wait for market to open.
     print("Waiting for market to open...")
+    process = psutil.Process(os.getpid())
+    print(process.memory_info().rss)
+
     tAMO = threading.Thread(target=self.awaitMarketOpen)
     tAMO.start()
     tAMO.join()
@@ -316,6 +321,8 @@ class LongShort:
 
     # Sort the stocks in place by the percent change field (marked by pc).
     self.allStocks.sort(key=lambda x: x[1])
+
+
 
 # Run the LongShort class
 ls = LongShort()
